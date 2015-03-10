@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+	<head>
+		<title>canvas时钟示例</title>
+		<meta charset='utf-8'>
+	</head>
+	<body>
+		<canvas width='500' height='500' id='clock' style='background="pink";'>
+			您的浏览器不支持HTML5 canvas标签，无法看到时钟！
+		</canvas>
+		<!-- canvas标签要用到javascript脚本来进行操作 -->
+		<script type="text/javascript">
+			//获取canvas标签元素
+			var clock = document.getElementById('clock');
+			//获取canvas画图环境
+			var context = clock.getContext('2d');
+
+			function drawClock(){
+
+				//清除画布 消除秒针移动过程中上一次的路径
+				context.clearRect(0,0,500,500);
+				//获取系统时间
+				var date = new Date();
+				var minutes = date.getMinutes();
+				var seconds = date.getSeconds();
+				var hours = date.getHours();
+				//系统小时应该为浮点型
+				hours += minutes/60;
+				//系统时间为24小时制，要进行转换为12小时制
+				hours = hours > 12?hours-12:hours;
+
+				//canvas时钟画图步骤
+
+					//表盘(圆圈颜色为蓝色 空心圆) 
+					context.lineWidth = '10';
+					context.strokeStyle = 'blue';
+					context.beginPath();
+					context.arc(250,250,200,0,360,false);
+					context.closePath();
+					context.stroke();
+
+					//刻度
+						//时刻度  在异次元空间进行绘制
+						for(var i = 0; i < 12; i++){
+							context.save();
+							//设置绘画风格
+							context.lineWidth = 7;
+							context.strokeStyle = '#000';
+							//设置0,0点
+							context.translate(250,250);
+							//设置绘图角度
+							context.rotate(i*30*Math.PI/180);
+							//开始路径
+							context.beginPath();
+							//绘线段
+							context.moveTo(0,-190);
+							context.lineTo(0,-170);
+							//关闭路径
+							context.closePath();
+							context.stroke();
+							context.restore();
+						}
+						//分刻度  在异次元空间进行绘制
+						for(var i = 0; i < 60; i++){
+							context.save();
+							//设置绘画风格
+							context.lineWidth = 5;
+							context.strokeStyle = '#000';
+							//设置0,0点
+							context.translate(250,250);
+							//设置绘图角度
+							context.rotate(i*6*Math.PI/180);
+							//开始路径
+							context.beginPath();
+							//绘线段
+							context.moveTo(0,-190);
+							context.lineTo(0,-180);
+							//关闭路径
+							context.closePath();
+							context.stroke();
+							context.restore();
+						}
+
+					//时针 在异次元空间进行绘制
+						context.save();
+						//设置绘图风格
+						context.lineWidth = 7;
+						context.strokeStyle = '#000';
+						//设置0,0点
+						context.translate(250,250);
+						//设置绘图角度
+						context.rotate(hours*30*Math.PI/180);
+						//开始路径
+						context.beginPath();
+						context.moveTo(0,-140);
+						context.lineTo(0,10);
+						//关闭路径
+						context.closePath();
+						context.stroke();
+						context.restore();
+					//分针 在异次元空间进行绘制
+						context.save();
+						//设置绘图风格
+						context.lineWidth = 5;
+						context.strokeStyle = '#000';
+						//设置0,0点
+						context.translate(250,250);
+						//设置绘图角度
+						context.rotate(minutes*6*Math.PI/180);
+						//开始路径
+						context.beginPath();
+						context.moveTo(0,-160);
+						context.lineTo(0,15);
+						//关闭路径
+						context.closePath();
+						context.stroke();
+						context.restore();
+					//秒针 在异次元空间进行绘制
+						context.save();
+						//设置绘图风格
+						context.lineWidth = 3;
+						context.strokeStyle = 'red';
+						//设置0,0点
+						context.translate(250,250);
+						//设置绘图角度
+						context.rotate(seconds*6*Math.PI/180);
+						//开始路径
+						context.beginPath();
+						context.moveTo(0,-170);
+						context.lineTo(0,20);
+						//关闭路径
+						context.closePath();
+						context.stroke();
+
+						//对秒针进行装饰
+							//时针分针秒针交叉处小圆圈
+							context.fillStyle = 'gray';
+							context.beginPath();
+							context.arc(0,0,5,0,360,false);
+							context.closePath();
+							context.stroke();
+							context.fill();
+							//秒针前段小圆圈
+							context.beginPath();
+							context.arc(0,-150,5,0,360,false);
+							context.closePath();
+							context.stroke();
+							context.fill();
+						context.restore();
+			}
+
+			drawClock();
+			//让时针分针秒针动起来
+			setInterval(drawClock,1000);
+		</script>
+	</body>
+</html>

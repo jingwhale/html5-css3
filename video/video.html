@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+	<head>
+		<title>HTML5音频和视频</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<!-- <video src="movie.webm" controls="controls">
+			你的破浏览器是古董早就该换了，否则无法播放魅力影片！
+		</video>
+		<hr />
+		多资源的视频播放
+		<video controls="controls" width="500" height="500">
+			<source src="movie.ogg" type="video/ogg"/>
+			<source src="movie.webm" type="video/webm"/>
+			您的浏览器不支持视频标签，还不赶快升级。
+		</video> -->
+		<hr />
+		使用一下video的API
+		<br />
+		<video src="movie.webm" controls="controls" id="video" poster="PLMM.jpg">
+			你的破浏览器是古董早就该换了，否则无法播放魅力影片！
+		</video>
+		<br />
+		<button onclick="bofang()">播放</button>
+		<button onclick="zanting()">暂停</button>
+		<button onclick="kuaijin()">快进10秒</button>
+		<button onclick="kuaitui()">快退10秒</button>
+		<button onclick="shutup(this)">闭嘴</button>
+		<button onclick="speedup()">加速播放</button>
+		<button onclick="speeddown()">减速播放</button>
+		<button onclick="normal()">正常播放</button>
+		<button onclick="upper()">调高嗓门</button>
+		<button onclick="lower()">调低嗓门</button>
+		<script type="text/javascript">
+			var video = document.getElementById("video");
+			//播放
+			function bofang(){
+				video.play();
+			}
+			//暂停
+			function zanting(){
+				video.pause();
+			}
+			//快进10秒
+			function kuaijin(){
+				video.currentTime += 10;
+			}
+			//快退10秒
+			function kuaitui(){
+				video.currentTime -= 10;
+			}
+			//闭嘴和张嘴  即静音和不静音
+			function shutup(obj){
+				if(video.muted){
+					obj.innerHTML = "闭嘴";
+					video.muted = false;
+				}else{
+					obj.innerHTML = "张嘴";
+					video.muted = true;
+				}
+			}
+			function speedup(){
+				video.playbackRate = 3;
+			}
+			function speeddown(){
+				video.playbackRate = 1/3;
+			}
+			function normal(){
+				video.playbackRate = 1;
+			}
+			function upper(){
+				video.volume +=0.1;//声音值得范围是0-1
+			}
+			function lower(){
+				video.volume -=0.1;
+			}
+		</script>
+		<hr />
+		<!--音频标签的使用-->
+		音频标签的使用<br />
+		<audio src="我的好兄弟.mp3" controls="controls">
+			你的老牛已经拉不动破车了，赶紧听中国好声音吧~~~
+		</audio>
+	</body>
+</html>

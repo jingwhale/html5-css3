@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<title>太极图形圆角示例演示</title>
+		<meta charset='utf-8'>
+		<style type="text/css">
+			#yuan {
+				width: 100px;
+				height: 50px;
+				border-top: 2px solid red;
+				border-right: 2px solid red;
+				border-bottom: 50px solid red;
+				border-left: 2px solid red;
+				
+				: 100px;
+				position: relative;
+			}
+			#yuan::after {
+				content: '';
+				width: 10px;
+				height: 10px;
+				border: 20px solid red;
+				position: absolute;
+				left: 0px;
+				top: 25px;
+				border-radius: 50px;
+				background: #fff;
+			}
+			#yuan::before {
+				content: '';
+				width: 10px;
+				height: 10px;
+				border: 20px solid #fff;
+				position: absolute;
+				right: 0px;
+				top: 25px;
+				border-radius: 50px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="yuan">
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+		<title>盒子模型阴影实例演示</title>
+		<meta charset='utf-8'>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 100px;
+				margin: 100px;
+				background: #ccc;
+			}
+			#left-top {
+				/*解决浏览器差异的方法  加上浏览器前缀*/
+				-webkit-box-shadow:-5px -5px;
+				/*实现w3c的标准*/
+				box-shadow: -5px -5px;
+			}
+			#right-top {
+				/*解决浏览器差异的方法  加上浏览器前缀*/
+				-webkit-box-shadow:5px -5px;
+				/*实现w3c的标准*/
+				box-shadow: 5px -5px;
+			}
+			#right-bottom {
+				/*解决浏览器差异的方法  加上浏览器前缀*/
+				-webkit-box-shadow:5px 5px;
+				/*实现w3c的标准*/
+				box-shadow: 5px 5px;
+			}
+			#left-bottom {
+				/*解决浏览器差异的方法  加上浏览器前缀*/
+				-webkit-box-shadow:-5px 5px;
+				/*实现w3c的标准*/
+				box-shadow: -5px 5px;
+			}
+			#rouhe {
+				/*解决浏览器差异的方法  加上浏览器前缀*/
+				-webkit-box-shadow:-10px 10px 10px;
+				/*实现w3c的标准*/
+				box-shadow: -10px 10px 10px;
+			}
+			#color {
+				/*解决浏览器差异的方法  加上浏览器前缀*/
+				-webkit-box-shadow:10px 10px 10px #ABCDEF;/*box-shadow属性有四个参数
+				第一第二个参数表示的是水平和垂直方向，第三个参数表示的是柔和度，第四个参数表示的是外延度，第五个参数表示的是颜色*/
+				/*实现w3c的标准*/
+				box-shadow: 10px 10px 10px #ABCDEF;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="left-top">
+			左上角盒子模型阴影
+		</div>
+		<div id="right-top">
+			右上盒子阴影模型
+		</div>
+		<div id="right-bottom">
+			右下盒子阴影模型
+		</div>
+		<div id="left-bottom">
+			左下盒子阴影模型
+		</div>
+		<div id="rouhe">
+			盒子模型柔和效果
+		</div>
+		<div id="color">
+			盒子模型彩色效果
+		</div>
+	</body>
+</html>

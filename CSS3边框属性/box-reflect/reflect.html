@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<title>盒子倒影演示</title>
+		<meta charset='utf-8'>
+		<style type="text/css">
+			/*图片倒影*/
+			img {
+				margin-left: 300px;
+				/*浏览器前缀*/
+				-webkit-box-reflect:below 1px -webkit-linear-gradient(top,transparent,transparent 50%,#FFF);/*设置倒影在盒子的方位 第一个参数为设定方位 
+				第二个参数为设定倒影和原盒子之间的距离 
+				第三个参数表示的是透明度*/
+			}
+			/*文字倒影效果*/
+			p {
+				font-size: 36px;
+				-webkit-box-reflect:below 1px -webkit-linear-gradient(top,transparent,transparent 50%,#FFF);
+			}
+		</style>
+	</head>
+	<body>
+		<img src="goddess/goddess_heart.jpg">
+		<p>锄禾日当午</p>
+		<p>汗滴禾下土</p>
+		<p>谁知盘中餐</p>
+		<p>粒粒皆辛苦</p>
+		<p>当午，汗滴和下土，盘中餐和粒粒</p> 
+	</body>
+</html>

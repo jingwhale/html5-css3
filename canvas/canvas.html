@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<title>canvas标签</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<!--canvas标签有的浏览器支持有的浏览器不支持-->
+		<canvas width="500" height="800" id="canvas" style="background:yellow;">
+			您的浏览器不支持canvas标签
+		</canvas>
+		<script type="text/javascript">
+			//获取画布，但是不能操作
+			var canvas = document.getElementById('canvas');
+
+			//设置绘图环境
+			var context = canvas.getContext('2d');
+
+			//一、画一条线段
+				//开始创建路径
+				context.beginPath();
+				//设定线条的宽度
+				context.lineWidth = 10;
+				//设定线条的颜色
+				context.strokeStyle= '#F90';
+				//设置笔触的位置
+				context.moveTo(20,20);
+				//设置画笔的移动方式 即是直线
+				context.lineTo(200,20);
+				//画线
+				context.stroke();
+				//封闭路径
+				context.closePath();
+
+
+			//二、画一个圆形
+				for(var i = 0; i < 10; i++){
+
+					//开始创建路径
+					context.beginPath();
+					//设定线条宽度
+					context.lineWidth = 1;
+					//创建圆形路径
+					context.arc(i*40,i*40,i*10,0,Math.PI*2,false);
+					//设定绘制样式，进行图形绘制
+					context.fillStyle = "rgba(255,0,0,0.2)";//fill用于画实心圆
+					//填充
+					context.fill();
+					//关闭路径
+					//context.closePath(); 
+				}
+
+			//三、画一个实心圆
+				//开始创建路径
+				context.beginPath();
+
+				context.strokeStyle = 'red';//stroke用于画空心圆直线
+				context.arc(350,50,20,0,Math.PI*2,true);
+				context.stroke();
+				context.fill();//stroke和fill表示既有实心圆又有空心圆
+				//封闭路径
+				context.closePath();
+
+			//四、画一个矩形
+				context.strokeRect(350,100,100,50);
+				context.fillStyle = 'blue';
+				context.fillRect(350,170,100,50);
+
+			//五、设置文字
+				context.font = '60px 仿宋';
+				context.fillText('jingwhale',30,300);
+				context.strokeText('jingwhale',30,350);
+
+			//六、画图 把一幅图像画到画布中  注意WebKit内核的浏览器 chrome和猎豹浏览器不支持 img图片元素
+				var img = new Image();
+				img.src = 'xiaomm.jpg';
+				context.drawImage(img,30,400,230,306);
+
+			//第七 画一个三角形
+				context.beginPath();
+				//移动开始点  画空心三角形
+				context.moveTo(350,450);
+				context.lineTo(300,550);
+				context.lineTo(400,550);
+				context.closePath();
+				context.stroke();
+				//画实心三角形
+				context.beginPath();
+				context.moveTo(350,560);
+				context.lineTo(300,660);
+				context.lineTo(400,660);
+				context.closePath();
+				context.fill();
+		</script>
+	</body>
+</html>

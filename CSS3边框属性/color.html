@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<title>彩虹阴影效果演示</title>
+		<meta charset='utf-8'>
+		<style type="text/css">
+			#caihong {
+				margin: 200px auto;
+				width: 200px;
+				height: 100px;
+				background: #ccc;
+				text-align: center;
+				line-height: 100px;
+				/*解决浏览器差异问题  加上浏览器前缀*/
+				-webkit-box-shadow:0 0 10px 10px red,
+								   0 0 10px 20px orange,
+				 				   0 0 10px 30px yellow,
+								   0 0 10px 40px green,
+				                   0 0 10px 50px cyan,
+				 				   0 0 10px 60px blue,
+				  				   0 0 10px 70px purple;
+				box-shadow:0 0 10px 10px red,
+						   0 0 10px 20px orange,
+						   0 0 10px 30px yellow,
+						   0 0 10px 40px green,
+						   0 0 10px 50px cyan,
+						   0 0 10px 60px blue,
+						   0 0 10px 70px purple;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="caihong">
+			彩虹阴影效果显示
+		</div>
+	</body>
+</html>
